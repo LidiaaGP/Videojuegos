@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div th:fragment="cabecera"></div>
+	<header>
+		<div>
+			<h1>Videojuegos</h1>
+		</div>
+	</header>	
+	<main>
+		<form th:action="@{/guardarJuego}" method="post" th:object="${juego}">
+			<h2>Agregar juego</h2><br>
+			<input type="text" name="titulo" th:field="*{titulo}" required placeholder="Título juego"><br><br>
+			<input type="text" name="precio" th:field="*{precio}" required placeholder="Precio juego"><br><br>
+			<select name="empresa.id" th:field="*{empresa.id}" required>
+			<option th:each="elemento : ${empresas}" th:value="${elemento.id}" th:text="${elemento.empresa}"></option>
+			</select>
+			
+			<select name="estilo.id" th:field="*{estilo.id}" required>
+			<option th:each="elemento : ${estilos}" th:value="${elemento.id}" th:text="${elemento.estilo}"></option>
+			</select><br><br>
+			<input type="submit" value="Añadir"><br>
+		</form>
+		
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th>Título</th>
+					<th>Precio</th>
+					<th>Estilo</th>
+					<th>Empresa</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody th:each="elemento : ${juegos}">
+				<tr>
+					<td th:text="${elemento.titulo}"></td>
+					<td th:text="${elemento.precio}"></td>
+					<td th:text="${elemento.estilo.estilo}"></td>
+					<td th:text="${elemento.empresa.empresa}"></td>
+					<td>
+						<a th:href="'borrarJuego?id=' + ${elemento.id}">Borrar</a>
+						<a th:href="'modificarJuego?id=' + ${elemento.id}">Modificar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+	
+	<div th:fragment="pie"></div>
+</body>
+</html>

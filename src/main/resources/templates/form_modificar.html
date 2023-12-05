@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div th:fragment="cabecera"></div>
+	<header>
+		<div>
+			<h1>Videojuegos</h1>
+		</div>
+	</header>	
+	<main>
+		<form method="POST" th:action="@{/asssssadasf}" >
+			
+			<input type="text" name="id" placeholder="Id" th:field="${juego.id}" required><br>
+			
+			<input type="text" name="titulo" placeholder="Titulo" th:field="${juego.titulo}" required><br>
+			
+			<input type="text" name="precio" placeholder="Precio" th:field="${juego.precio}" pattern="^\d+(\.\d{1,2})?$" required><br>
+			
+			<select name="empresa.id" th:field="${juego.empresa.id}">
+			<option th:each="elemento:${empresas}" th:value="${elemento.id}"
+			th:text="${elemento.empresa}" ></option>
+			</select><br>
+			
+			<select name="estilo.id" th:field="${juego.estilo.id}" >
+			<option th:each="elemento:${estilos}" th:value="${elemento.id}"
+			th:text="${elemento.estilo}"></option>
+			</select><br>
+			
+			<input type="submit" value="Agregar">
+		</form>
+		
+	<div th:fragment="pie"></div>
+</body>
+</html>

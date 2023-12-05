@@ -1,0 +1,154 @@
+@charset "UTF-8";
+/*
+CODIGO BASE DE LA WEB. NO TOCAR
+cualquier modificacion de estilos sobre esta base se hara
+en una hoja de estilos adicional y se enlazara al JSP correspondiente
+*/
+:root {
+  /* Colores Azul Verdoso */
+  --principal: #007F7E;
+  --principalOscuro: #005D5C;
+  --principalMuyOscuro: #004848;
+  --principalClaro: #00A5A4;
+  --principalMuyClaro: #00B8B7;
+
+  /* contraste Dorado */
+  --contraste: rgb(255, 250, 217);
+  --contrasteOscuro: rgb(255, 236, 157);
+  --contrasteClaro: rgb(255, 244, 202);
+  
+  /* Colores de Fondo */
+  --colorFondoOscuro: #E0F7F7;
+  --colorFondoClaro: #F5FEFE;
+  
+  /* Colores de Texto */
+  --texto: #212121; 
+  --textoClaro: #BDBDBD; 
+  
+  /* Tamaños */
+  --sizeFuente: 12px;
+  
+  /* Fuentes */
+  --fuente: 'Helvetica Neue', Arial, sans-serif;
+  --fuenteContraste: 'Georgia', 'Times New Roman', serif;
+  
+  /* Alturas de cabecera y pie */
+  --alturaCabecera: 180px;
+  --alturaPie: 60px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: var(--fuente);
+	color: var(--texto);
+	font-size:var(--texto);
+}
+
+
+/* Estilos de la cabecera */
+header{
+	/*este height se usa en el calculo del tamaño del main*/
+	height:var(--alturaCabecera);
+	
+	background-color: var(--principal);
+	display:flex;
+	flex-direction:column;
+	justify-content: flex-end;
+
+}
+
+
+h1{
+	margin:10px;
+	color:var(--contraste);
+	
+	font-family: var(--fuenteContraste);
+	font-size:48px;
+}
+
+h2{
+	font-size:20px;
+}
+
+
+/* Estilos del menu */
+nav{
+	background-color: var(--principalOscuro);
+	
+}
+
+.elem_menu{
+	display:inline-block;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.elem_menu > a{
+	display:block;
+	background-color:var(--principalOscuro);
+	padding: 8px 30px;	
+	color: var(--contraste);
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.elem_menu > a:visited{
+	color: var(--contraste);
+}
+
+.elem_menu > a:hover{
+	background-color:var(--principalClaro);
+	color: var(--contrasteClaro);
+}
+.elem_menu > a:active{
+	background-color:var(--contraste);
+	color: var(--principalMuyOscuro);
+}
+
+/* estilos del cuerpo */
+main{	
+	/* altura del main= todo menos la cabecera y el pie. tienen altura fija */
+	min-height: calc(100vh - (var(--alturaCabecera) + var(--alturaPie)));
+	background-color: var(--colorFondoClaro);
+	margin:10px;
+	
+}
+
+
+/* estilos del pie */
+footer{
+	/*este height se usa en el calculo del tamaño del main*/
+	height:var(--alturaPie);
+	background-color: var(--principal);
+	
+
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilo de las filas impares para mayor legibilidad */
+tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Estilo de las celdas de encabezado */
+th {
+  background-color: rgb(0, 128, 128);
+  color: #fff;
+}
+
+
